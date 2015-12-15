@@ -1,4 +1,4 @@
-package cn.conon.jse.demo.priority;
+package cn.conon.jse.sample.priority;
 
 import java.util.ArrayList;
 
