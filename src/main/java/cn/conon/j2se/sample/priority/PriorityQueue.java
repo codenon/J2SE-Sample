@@ -1,4 +1,4 @@
-package cn.conon.jse.sample.priority;
+package cn.conon.j2se.sample.priority;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.PriorityBlockingQueue;
 
-import cn.conon.jse.sample.utils.MathUtils;
+import cn.conon.j2se.sample.utils.MathUtils;
 
 /**
  * 

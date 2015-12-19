@@ -1,4 +1,4 @@
-package cn.conon.jse.sample.introspector;
+package cn.conon.j2se.sample.introspector;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
@@ -21,8 +21,7 @@ public class BeanUtilsSample {
 	 * @throws Exception
 	 * @throws IllegalAccessException
 	 */
-	public static void main(String[] args) throws ParseException,
-			IllegalAccessException, Exception {
+	public static void main(String[] args) throws ParseException, IllegalAccessException, Exception {
 
 		String name = "aaaa";
 		String password = "123456";
@@ -34,8 +33,7 @@ public class BeanUtilsSample {
 		test3(name, password, age, birthday);
 	}
 
-	private static void test1(String name, String password, String age,
-			String birthday) throws ParseException {
+	private static void test1(String name, String password, String age, String birthday) throws ParseException {
 		// 传统方式：如何客户端提交的数据封装到javabean
 		Person p = new Person();
 		p.setName(name);
@@ -47,9 +45,8 @@ public class BeanUtilsSample {
 		p.setBirthday(birth);
 	}
 
-	private static void test2(String name, String password, String age,
-			String birthday) throws IllegalAccessException,
-			InvocationTargetException {
+	private static void test2(String name, String password, String age, String birthday)
+			throws IllegalAccessException, InvocationTargetException {
 
 		// 用beanUtils框架把数据封装到bean中
 		// 注册转换器
@@ -76,9 +73,8 @@ public class BeanUtilsSample {
 		System.out.println(p.getBirthday());
 	}
 
-	private static void test3(String name, String password, String age,
-			String birthday) throws ParseException, Exception,
-			InvocationTargetException {
+	private static void test3(String name, String password, String age, String birthday)
+			throws ParseException, Exception, InvocationTargetException {
 		// 用beanutils框架内置转换器进行转换
 		ConvertUtils.register(new DateLocaleConverter(), Date.class);
 		Person p = new Person();

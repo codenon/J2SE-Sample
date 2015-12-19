@@ -1,4 +1,4 @@
-package cn.conon.jse.sample.introspector;
+package cn.conon.j2se.sample.introspector;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;

@@ -1,4 +1,4 @@
-package cn.conon.jse.sample.utils;
+package cn.conon.j2se.sample.utils;
 
 import java.text.DecimalFormat;
 

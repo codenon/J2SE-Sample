@@ -1,4 +1,4 @@
-package cn.conon.jse.sample.priority;
+package cn.conon.j2se.sample.priority;
 
 import java.util.ArrayList;
 
@@ -51,7 +51,6 @@ public abstract class PriorityItemBase implements Comparable<PriorityItemBase> {
 		this.size = size;
 	}
 
-	@Override
 	public int compareTo(PriorityItemBase o) {
 		if (o instanceof PriorityItemBase) {
 			return (getPriority() > o.getPriority()) ? 1 : -1;
@@ -89,10 +88,8 @@ public abstract class PriorityItemBase implements Comparable<PriorityItemBase> {
 
 	@Override
 	public String toString() {
-		return "space=" + space + ", priority=" + priority + ", size=" + size
-				+ "\r\ntimes=" + times + "\r\ntotalTimes=" + totalTimes
-				+ "\r\nspaces=" + spaces
-				+ "\r\n------------------------------------------\r\n";
+		return "space=" + space + ", priority=" + priority + ", size=" + size + "\r\ntimes=" + times + "\r\ntotalTimes="
+				+ totalTimes + "\r\nspaces=" + spaces + "\r\n------------------------------------------\r\n";
 	}
 	// ===========================测试用=========================================
 }
