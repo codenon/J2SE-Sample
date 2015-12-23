@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>cn.conon.j2se.sample</groupId>
-	<artifactId>J2SE-Sample</artifactId>
+	<groupId>cn.conon.jse.sample</groupId>
+	<artifactId>jse-Sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>J2SE-Sample</name>
+	<name>jse-Sample</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
