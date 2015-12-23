@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cn.conon.jse.sample</groupId>
-	<artifactId>jse-Sample</artifactId>
+	<artifactId>JSE-Sample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>jse-Sample</name>
+	<name>JSE-Sample</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
