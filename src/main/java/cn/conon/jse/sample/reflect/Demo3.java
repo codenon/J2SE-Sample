@@ -2,8 +2,6 @@ package cn.conon.jse.sample.reflect;
 
 import java.lang.reflect.Method;
 
-import org.junit.Test;
-
 public class Demo3 {
 
 	/**
@@ -35,7 +33,7 @@ public class Demo3 {
 	}
 
 	// 解剖一个类有参的方法并运行:public void run(String name)
-	@Test
+
 	public void test3() throws Exception {
 		Class clazz = Class.forName("cn.conon.jse.sample.reflect.Person");
 
@@ -44,7 +42,7 @@ public class Demo3 {
 	}
 
 	// 解剖一个类有参的方法并运行public void run(String name,int arr[])
-	@Test
+
 	public void test4() throws Exception {
 		Class clazz = Class.forName("cn.conon.jse.sample.reflect.Person");
 		Method method = clazz.getMethod("run", String.class, int[].class);
@@ -53,7 +51,7 @@ public class Demo3 {
 	}
 
 	// 解剖带返回值的方法public String eat(String name){
-	@Test
+
 	public void test5() throws Exception {
 		Class clazz = Class.forName("cn.conon.jse.sample.reflect.Person");
 		Method method = clazz.getMethod("eat", String.class);
@@ -63,7 +61,7 @@ public class Demo3 {
 
 	// 解剖私有方法private String eat(int num){
 	// 对于非公有方法想得到的话，需要调用class.getDeclaredMethod
-	@Test
+
 	public void test6() throws Exception {
 		Class clazz = Class.forName("cn.conon.jse.sample.reflect.Person");
 		Method method = clazz.getDeclaredMethod("eat", int.class);
@@ -75,7 +73,7 @@ public class Demo3 {
 	}
 
 	// 解剖静态方法public static void eat(){
-	@Test
+
 	public void test7() throws Exception {
 		Class clazz = Class.forName("cn.conon.jse.sample.reflect.Person");
 
@@ -84,7 +82,7 @@ public class Demo3 {
 	}
 
 	// 解剖public static void main(String[] args)
-	@Test
+
 	public void test8() throws Exception {
 		Class clazz = Class.forName("cn.conon.jse.sample.reflect.Person");
 

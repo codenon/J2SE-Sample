@@ -2,13 +2,11 @@ package cn.conon.jse.sample.reflect;
 
 import java.lang.reflect.Field;
 
-import org.junit.Test;
-
 //反射类的属性
 public class Demo4 {
 
 	// 反射：public int age;
-	@Test
+
 	public void test1() throws SecurityException, NoSuchFieldException, IllegalArgumentException,
 			IllegalAccessException {
 
@@ -22,7 +20,7 @@ public class Demo4 {
 	}
 
 	// 反射： private String name;
-	@Test
+
 	public void test2() throws Exception {
 
 		Person2 p = new Person2();
@@ -35,7 +33,7 @@ public class Demo4 {
 	}
 
 	// 反射： private String name;
-	@Test
+
 	public void test3() throws Exception {
 
 		Person2 p = new Person2();
