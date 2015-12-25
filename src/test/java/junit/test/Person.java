@@ -3,7 +3,7 @@ package junit.test;
 public class Person {
 	public void eat() {
 		System.out.println("eat!!!");
-		throw new RuntimeException("aahha");
+		// throw new RuntimeException("aahha");
 	}
 
 	public void run() {

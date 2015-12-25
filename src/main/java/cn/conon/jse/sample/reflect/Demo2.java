@@ -12,7 +12,7 @@ public class Demo2 {
 
 		Class clazz1 = Person.class;
 		Class clazz2 = new Person().getClass();
-		Class clazz3 = Class.forName("cn.itcast.reflect.Person");
+		Class clazz3 = Class.forName("cn.conon.jse.sample.reflect.Person");
 
 	}
 
