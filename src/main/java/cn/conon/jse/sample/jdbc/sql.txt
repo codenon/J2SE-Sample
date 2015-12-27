@@ -1,0 +1,14 @@
+create database test_db01;
+use test_db01;
+create table user
+(
+	id int primary key auto_increment,
+	name varchar(40),
+	password varchar(40),
+	email varchar(60),
+	birthday date	
+)character set utf8 collate utf8_general_ci;
+
+insert into user(name,password,email,birthday) values('zs','123456','zs@sina.com','1980-12-04');
+insert into user(name,password,email,birthday) values('lisi','123456','lisi@sina.com','1982-11-08');
+insert into user(name,password,email,birthday) values('wangwu','123456','wangwu@sina.com','1981-09-28');
