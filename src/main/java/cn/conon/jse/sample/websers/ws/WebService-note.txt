@@ -1,0 +1,37 @@
+今天课程重点：----1.	几个术语
+							2.  几种结构的差别
+							3.  定制发布
+							
+							
+WebService----
+需要了解到知识
+	1.  b/s:browser/server(web server),瘦客户端，
+		业务的真正执行在服务器端，部署和升级很方便。
+	2.  c/s:client/server(db server),富客户端，界面友好，
+		业务的真正执行在客户端，部署升级不方便。
+	3.	远程调用:client/server(web server),	和bs程序很像，
+		共同点：业务的真正执行在服务器端，
+		不同点：b/s程序服务器端向客户端发送的是含有html代码的
+	4.	进程间通信必须要涉及到套接字编程，而线程间共享内存，
+		所以直接是用对象间引用就可以通信了。
+
+正文：
+	1.	web service---是远程调用的一种.
+		它是一种跨平台、跨语言、分布式系统间的整合方案。
+		平台：指的是操作系统；
+		语言：指java，c++等编程语言；
+		分布式：指由不同主机上的程序协同在一起，来构成整个
+		应用。jsp，servlet，jpa等都是分布式
+	2.	esb:enterprise service bus,企业服务总线
+	3.	soap: simple object access protocal，简单对象访问协议。
+	4.	http: hyper text transport protocal
+	5.wsdl: web service descritpion language, web service描述语言
+			   location:
+			   端口
+			   操作
+			   输入和输出
+	6.	使用myeclipse访问wsdl-page
+		打开Launch Web Services Explorer-->wsdl page-->
+		http://localhost:7070/HelloWorldWebService?wsdl
+		file:e/HelloWorldWebService.wsdl
+	

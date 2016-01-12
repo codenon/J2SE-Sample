@@ -1,0 +1,195 @@
+webservice
+第一天：webservice 简单的应用，原理的介绍
+1、webservice 的概念，解决什么问题？
+webservice 就是一个应用程序，它提供一种通过web 方式访问的api.
+解决两个系统或者（应用程序）之间的远程调用.....
+调用是跨语言，跨平台...
+webservice 最基本的组成部分就是客户端，服务端...
+2，webservice 的例子的应用。
+服务端：(作为服务端，怎么将自己的应用程序发布成一个webservice，让别人调用)
+xml （webservice的客户端与服务端进行交互的时候传递的数据格式）
+webservice description language（web 服务描述语言.. api）xml,简称wsdl
+soap（简单对象访问协议） webservice 的客户端与服务端进行交互的时候走的协议
+(soap 分两个版本（soap 1.1 与soap1.2）),现在的本是soap1.1,因为java jdk 只支持soap1.1版本的协议发布..
+***** soap 协议=在http 的基础之上传送xml 格式的数据..
+
+发布服务：
+	//java jdk 提供一个自带的类可以将java 应用程序发布成webservice 
+	/**
+	 * 1,提供服务对外的访问地址
+	 * 2,提供服务的类的对象...
+	 */
+	Endpoint.publish("http://192.168.9.100:9999/helloService", new HelloService());
+
+注意：1,endpoint是java jdk 提供的类，用来发布webservice，所以你的jdk 版本必须在1.6.0_21之上..
+      2,被发布的类当中必须包含一个有效（方法必须为publish的非静态的，非final的方法）的方法
+      3,被发布的类上面必须有注解...
+		
+客户端：
+(作为客户端，怎么调用别人发布的webservice)
+调用服务：我们可以通过java jdk 自带的一个命令 wsimport 根据服务端说明书（wsdl）生成本地的java 代码
+我们直接操作这些java 代码，就可以调用webservice 
+wsimport -d . +服务说明书（wsdl）的地址 生成本地的class 文件
+wsimport -s . +服务说明书（wsdl）的地址 生成本地的class 文件与java文件
+wsimport -s . -p(包名)+服务说明书（wsdl）的地址 生成本地的class 文件与java文件
+
+第一种方式调用：通过wsimport
+工具1：webservice explorer （通过图形化界面的方式调用webservice）
+
+工具2：tcp/ip Monitor  可以拦截webservice客户端与webservice 服务端进行交互的整个过程以及数据传输的格式..
+
+第二种方式调用:通过java jdk 自带的一个类URLConnect(可以发送一个http 请求)
+原理：我们可以通过URLConnect 这个对象，发送一个http 请求，往webservice 服务端 传送xml 格式的数据，
+模拟soap 协议 ,因为soap协议就是在http 的基础上传送xml格式的数据..
+
+第三种方式调用：通过客户端编程的方式调用 webservice 我们需要通过java jdk 自带的类 Service ，
+同时，我们需要依赖一个接口，这个接口我们可以通过wsimport 生成的本地代码当中获取...
+
+
+/**
+  互联网上有很多免费的服务,http://www.webxml.com.cn 可以在这个网站上面找到。
+**/
+1,调用互联网上手机号码归属地查询的服务
+使用第一种：wsimport 生成本地代码调用
+使用第二种：使用urlConnect 调用天气预报..
+
+第四种调用方式：通过ajax 去调用webservice 
+	xmlhttpRequest 对象时浏览器自带的一个对象，可以通过此对象发送一个http 请求，传送xml 格式的数据到服务端
+（模拟soap 协议...）
+	不能访问：跨域(a 站点的js 访问b 站点的请求...)
+
+webservice 加深:
+	通过webservice 的客户端与服务端的几种调用方式，通过tcp ip/monitor 监控webservice 请求的过程
+拦截请求的数据，对数据进行分析...
+	webservice 的客户端与服务端进行交互的时候，
+	第一次通过get 请求 wsdl 的服务说明书
+	第二次通过post 的方式 请求 webservice 服务...
+	
+理解wsdl 服务的说明书：
+
+我们可以通过修改注解来修改wsdl 服务说明书的描述。
+如果修改了说明书，则会影响wsimport 生成的本地代码....
+
+扩展：怎么做一个网页的播放器
+三种方式：
+	第一种方式：通过js 把 window media player 调出来
+	第二种方式：adobefalsh 里面有一种语言actionscript 可以操作硬件：摄像头，麦克风，扬声器。。。
+各大浏览器对adobefalsh 提供支持，adobeflash 里面的actionscript 对js 提供了接口，js 就可以actionscript
+完成播放的一些功能...
+	第三种方式：通过html5 来完成播放器的制作。
+
+
+3，webservice 的原理分析
+
+
+第二天：webservice 在cxf 框架当中的应用以及与web 做整合
+
+ant 工具：1、为什么要用到ant这个工具呢？Ant做为一种工具已经广泛被使用，并且历史悠久。
+使用ant的内置命令，可以编译java源文件(javac),运行java文件（java），给class文件打包(jar、war、ear),
+也可以创建（mkdir）、删除（del）、拷贝（copy），甚至可以使用ant执行sql文件。
+由于ant是用xml语言写成的文件，并取默认名为build.xml文件。
+所以，今后大家应该在见到名为build.xml文件时知道这是一个ant的文件。
+
+ant 工具后面跟的是任务的名称
+
+ant server 运行了Server类，发布了一个webservice
+
+ant client 调用已经发布的webservice 
+
+ant clean 清除已经生成的class 文件
+
+
+ant war 将java 项目打成一个war 包
+
+ant deploy -Dtomcat=true 把打成的war 拷贝到tomcat 的webapp 下面去。
+
+ant undeploy -Dtomcat=true; 卸载tomcat 下面的项目..
+
+服务端：
+用cxf 框架提供的类发布一个服务
+使用cxf 提供 ServerFactoryBean 来发布webservice 
+被发布的类当中可以不需要标注webservice 注解，类当中可以不包含有效的方法，
+如果没有包含有效的方法.它会提供一个空的服务.
+//创建发布服务的类...
+ServerFactoryBean bean=new ServerFactoryBean();
+bean.setAddress("http://192.168.9.100:8080/server");//服务对外的访问地址
+bean.setServiceClass(CxfWebService.class);//设置服务类的接口类型，如果没有接口则为当前类..
+bean.setServiceBean(new CxfWebService());//设置服务类的实现
+bean.create();//发布服务
+第二种发布方式:
+------------------------------------------------------------------------------------------
+使用cxf 框架提供的类 jaxWsServerFactoryBean 发布webService
+jaxWsServerFactoryBean 是 ServerFactoryBean 的子类... 
+jaxWsServerFactoryBean bean=new jaxWsServerFactoryBean();
+bean.setAddress("http://192.168.9.100:8080/server");//服务对外的访问地址
+bean.setServiceClass(CxfWebService.class);//设置服务类的接口类型，如果没有接口则为当前类..
+bean.setServiceBean(new CxfWebService());//设置服务类的实现
+bean.create();//发布服务
+
+-------------------------------------------------------------------------------------------
+客户端：
+用cxf 框架提供的类调用服务.. (需要依赖一个接口，通过wsimport 生成的代码当中获取...)
+//创建调用webservice 服务的类...
+ClientProxyFactoryBean bean=new ClientProxyFactoryBean();
+bean.setAddress("http://192.168.9.100:8080/server");//设置访问地址...
+bean.setServiceClass(CxfWebServicePortType.class);//设置服务的接口...
+//创建接口类型...
+CxfWebServicePortType cxfWebServicePortType=(CxfWebServicePortType) bean.create();
+cxfWebServicePortType.sayHello();
+----------------------------------------------------------------------------------
+使用cxf 提供类 JaxWsProxyFactoryBean 来调用 webservice 的服务端.......
+
+JaxWsProxyFactoryBean 是  ClientProxyFactoryBean  的子类...
+//创建调用服务的类...
+JaxWsProxyFactoryBean bean=new JaxWsProxyFactoryBean();
+//设置访问地址
+bean.setAddress("http://192.168.9.100:7418/userService");
+//设置接口类型...
+bean.setServiceClass(UserService.class);
+UserService us=(UserService) bean.create();
+
+String data=us.getUserById(1);
+
+System.out.println(data);
+---------------------------------------------
+调用原则： 总结......
+ 服务端：		       客户端
+ ServerFactoryBean ------------ClientProxyFactoryBean
+ JaxWsServerFactoryBean----------------JaxWsProxyFactoryBean 
+ JaxWsServerFactoryBean 可以发布soap1.2 版本的协议....发布服务的时候，
+ 我们最好被发布的服务类要面向接口编程..
+
+命令：wsdl2java  
+      wsdl2java 是cxf 框架给我们提供的命令，这个命令的作用与wsimport 类似...
+	
+拦截器:
+    cxf 框架中提供了拦截器的机制，我们可以通过拦截器获取到客户端与服务端进行交互的时候的数据格式
+	//创建发布服务的 类...
+	JaxWsServerFactoryBean  bean=new JaxWsServerFactoryBean();
+	//设置对外的访问地址
+	bean.setAddress("http://192.168.9.100:7418/userService");
+	bean.setServiceClass(UserService.class);//设置接口类型...
+	bean.setServiceBean(new UserServiceImpl());//设置接口的实现类...
+	//我们可以在发布服务的时候添加消息拦截器
+	//拦截客户端往服务端 发送的请求的消息
+	bean.getInInterceptors().add(new LoggingInInterceptor());
+	//拦截服务端往客户端返回的消息...
+	bean.getOutInterceptors().add(new LoggingOutInterceptor());
+	bean.create();
+
+
+cxf 与web 项目的整合
+由于cxf的web项目已经集成了Spring所以，cxf的服务类都是在spring的配置文件中完成的。以下是步骤：
+
+第一步：建立一个web项目。
+第二步：准备所有jar包。将cxf_home\lib项目下的所有jar包全部copy到新项目的lib目录下，里面已经包含了spring3.0的jar包。
+第三步：在web.xml中配置cxf的核心servlet，CXFServlet。
+第四步：创建(最好是Copy)cxf-servlet.xml文件。这是一个spring的配置文件。
+
+发布一个不带接口的webservice 
+<!-- 1,id,2,服务对外的访问地址，3，提供服务的实现类..  -->
+<jaxws:endpoint id="helloService" address="/helloService" implementor="cn.itcast.cxf.spring.HelloService"></jaxws:endpoint>
+发布一个带接口的webservice 
+
+
+
